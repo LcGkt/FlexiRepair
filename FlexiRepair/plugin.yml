@@ -1,0 +1,24 @@
+name: FlexiRepair
+main: FlexiRepair.Main
+version: 1.0.1
+author: LcG
+description: Plugin de reparo de itens via placa
+api-version: 1.13
+depend: [Vault]
+
+commands:
+  flexirepair:
+    description: Comando principal do plugin FlexiRepair
+    usage: /<command> [reload]
+    aliases: [frepair, frep]
+
+permissions:
+  repair.use:
+    description: Permissao para usar a placa de reparo
+    default: true
+  repair.sign-create:
+    description: Permissao para criar placas de reparo
+    default: op
+  repair.admin:
+    description: Permissao para recarregar o plugin
+    default: op

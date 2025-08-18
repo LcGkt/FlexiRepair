@@ -1,0 +1,9 @@
+# Comando de reload
+ComandoReload:
+  Principal: "flexirepair"
+  Aliases: ["repair","frepair"]
+  
+repair-cost-item: 100
+
+update: true
+check-update-minutes: 30
