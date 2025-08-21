@@ -1,9 +1,10 @@
 Mensagens:
   cooldown: "&cAguarde &e{seconds} &csegundos antes de usar novamente."
-  no-permission: "&cVocê não possui permissão para usar este comando."
-  no-permission-sign: "&cVocê não possui permissão para criar esta placa."
-  not-enough-money: "&cVocê não possui &e{cost} &cpara reparar o item."
-  no-repairable-item: "&cEste item não pode ser reparado."
+  no-permission: "&cVocÃª nÃ£o possui permissÃ£o para usar este comando."
+  no-permission-sign: "&cVocÃª nÃ£o possui permissÃ£o para criar esta placa."
+  not-enough-money: "&cVocÃª nÃ£o possui &e{cost} &cpara reparar o item."
+  no-repairable-item: "&cEste item nÃ£o pode ser reparado."
   repaired-item: "&aItem reparado com sucesso por &e{cost}&a."
-  no-permission-reload: "&cVocê não tem permissão para recarregar o plugin."
-  success: "&aConfigurações recarregadas com sucesso."
+  no-permission-reload: "&cVocÃª nÃ£o tem permissÃ£o para recarregar o plugin."
+  success: "&aConfiguraÃ§Ãµes recarregadas com sucesso."
+

@@ -55,15 +55,15 @@ public class Main extends JavaPlugin implements Listener {
         config = getConfig();
 
         if (!setupEconomy()) {
-            Bukkit.getConsoleSender().sendMessage("§c[FlexiRepair] Vault não encontrado. Plugin desativado.");
+            Bukkit.getConsoleSender().sendMessage("&c[FlexiRepair] Vault nÃ£o encontrado. Plugin desativado.");
             getServer().getPluginManager().disablePlugin(this);
             return;
         }
 
         getServer().getPluginManager().registerEvents(this, this);
-        Bukkit.getConsoleSender().sendMessage("§bPlugin Repair habilitado!");
+        Bukkit.getConsoleSender().sendMessage("Â§aPlugin FlexiRepair habilitado!");
 
-        // Verificação de atualização assíncrona
+        // VerificaÃ§Ã£o de atualizaÃ§Ã£o assÃ­ncrona
         if (config.getBoolean("update", true)) {
             iniciarVerificacaoPeriodica();
         }
@@ -71,7 +71,7 @@ public class Main extends JavaPlugin implements Listener {
 
     @Override
     public void onDisable() {
-        Bukkit.getConsoleSender().sendMessage("§cPlugin Repair desabilitado.");
+        Bukkit.getConsoleSender().sendMessage("Â§cPlugin Repair desabilitado.");
     }
 
     private boolean setupEconomy() {
@@ -99,7 +99,7 @@ public class Main extends JavaPlugin implements Listener {
         if (!(block.getState() instanceof Sign)) return;
 
         Sign sign = (Sign) block.getState();
-        if (!sign.getLine(0).equalsIgnoreCase("§4[reparar]")) return;
+        if (!sign.getLine(0).equalsIgnoreCase("Â§4[reparar]")) return;
 
         UUID playerId = player.getUniqueId();
         long now = System.currentTimeMillis();
@@ -146,15 +146,15 @@ public class Main extends JavaPlugin implements Listener {
         String permissionSignCreate = config.getString("repair.sign-create", "repair.sign-create");
 
         if (event.getLine(0).equalsIgnoreCase("[reparar]") && player.hasPermission(permissionSignCreate)) {
-            event.setLine(0, "§4[reparar]");
-            event.setLine(1, "§0Item");
+            event.setLine(0, "Â§4[reparar]");
+            event.setLine(1, "Â§0Item");
             event.setLine(2, ""); // linha do meio vazia ou info extra
             int cost = config.getInt("repair-cost-item", 500);
-            event.setLine(3, formatMoney(cost)); // valor do reparo na última linha
-            player.sendMessage("§aPlaca criada com sucesso");
+            event.setLine(3, formatMoney(cost)); // valor do reparo na Ãºltima linha
+            player.sendMessage("Â§aPlaca criada com sucesso");
         }
 
-        if (event.getLine(0).equalsIgnoreCase("§4[reparar]") && !player.hasPermission(permissionSignCreate)) {
+        if (event.getLine(0).equalsIgnoreCase("Â§4[reparar]") && !player.hasPermission(permissionSignCreate)) {
             event.getBlock().breakNaturally();
             player.sendMessage(getMessage("no-permission-sign"));
         }
@@ -180,7 +180,7 @@ public class Main extends JavaPlugin implements Listener {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (!(sender instanceof Player)) {
-            sender.sendMessage("Este comando só pode ser usado por jogadores.");
+            sender.sendMessage("Este comando so pode ser usado por jogadores.");
             return true;
         }
 
@@ -204,11 +204,11 @@ public class Main extends JavaPlugin implements Listener {
         return true;
     }
 
-    // ---------------- UTILITÁRIOS ---------------- //
+    // ---------------- UTILITIRIOS ---------------- //
 
     public String getMessage(String path) {
         return ChatColor.translateAlternateColorCodes('&',
-                messagesConfig.getString("Mensagens." + path, "&cMensagem não encontrada: " + path));
+                messagesConfig.getString("Mensagens." + path, "&cMensagem nÃ£o encontrada: " + path));
     }
 
     public String formatMoney(double value) {
@@ -221,7 +221,7 @@ public class Main extends JavaPlugin implements Listener {
         return String.valueOf((int) value);
     }
 
-    // ---------------- VERIFICAÇÃO DE ATUALIZAÇÃO ---------------- //
+    // ---------------- VERIFICAÃ‡ÃƒO DE ATUALIZAÃ‡ÃƒO ---------------- //
 
     private void iniciarVerificacaoPeriodica() {
         int intervaloMinutos = config.getInt("check-update-minutes", 30);
@@ -253,19 +253,19 @@ public class Main extends JavaPlugin implements Listener {
                             Bukkit.getScheduler().runTask(Main.this, () -> {
                                 for (Player p : Bukkit.getOnlinePlayers()) {
                                     if (p.hasPermission("repair.admin")) {
-                                        p.sendMessage("§c[FlexiRepair] §eNova versão disponível!");
-                                        p.sendMessage("§eSua versão: §f" + currentVersion + " §e| Nova versão: §f" + latestVersion);
-                                        p.sendMessage("§eBaixe em: §fhttps://www.spigotmc.org/resources/flexirepair.128105/");
+                                        p.sendMessage("Â§c[FlexiRepair] Â§eNova versÃ£o disponÃ­vel!");
+                                        p.sendMessage("Â§eSua versÃ£o: Â§f" + currentVersion + " Â§e| Nova versÃ£o: Â§f" + latestVersion);
+                                        p.sendMessage("Â§eBaixe em: Â§fhttps://www.spigotmc.org/resources/flexirepair.128105/");
                                     }
                                 }
                             });
-                            getLogger().warning("Nova versão do FlexiRepair disponível: " + latestVersion);
+                            getLogger().warning("Nova versÃ£o do FlexiRepair disponÃ­vel: " + latestVersion);
                         } else {
-                            getLogger().info("Você está usando a versão mais recente do FlexiRepair (" + currentVersion + ").");
+                            getLogger().info("VocÃª estÃ¡ usando a versÃ£o mais recente do FlexiRepair (" + currentVersion + ").");
                         }
                     }
                 } catch (Exception e) {
-                    getLogger().warning("Não foi possível verificar atualizações: " + e.getMessage());
+                    getLogger().warning("NÃ£o foi possÃ­vel verificar atualizaÃ§Ãµes: " + e.getMessage());
                 }
             }
         }.runTaskAsynchronously(this);
