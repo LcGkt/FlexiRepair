@@ -1,6 +1,6 @@
 name: FlexiRepair
 main: FlexiRepair.Main
-version: 1.0.1
+version: 1.0.2
 author: LcG
 description: Plugin de reparo de itens via placa
 api-version: 1.13
